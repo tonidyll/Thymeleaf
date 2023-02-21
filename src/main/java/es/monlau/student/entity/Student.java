@@ -36,19 +36,6 @@ public class Student {
     private String email;    
     
     
-    // relacion muchos a muchos con cursos
-    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.PERSIST)
-    @JoinTable(name="students_courses",
-        joinColumns = {
-            @JoinColumn(name="student_id", referencedColumnName="id",
-            nullable=false, updatable=false)
-        },
-        inverseJoinColumns = {
-            @JoinColumn(name="course_id", referencedColumnName="id",
-            nullable=false, updatable=false)
-        })
-    private Set<Course> courses = new HashSet<>();
-    
     
     public Student() {
     }
@@ -91,13 +78,6 @@ public class Student {
         this.email = email;
     }
 
-    public Set<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
-    }
 
     
     @Override
